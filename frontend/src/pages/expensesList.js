@@ -20,8 +20,11 @@ import {
 import { Edit, Delete } from "@mui/icons-material";
 import { getExpenses, deleteExpense, profileDetails } from "../api";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
-const ExpenseList = ({ onEdit }) => {
+const ExpenseList = () => {
+    const navigate = useNavigate();
+  
   const [budgets, setBudgets] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
   const [filteredBudgets, setFilteredBudgets] = useState([]);
@@ -60,6 +63,10 @@ const ExpenseList = ({ onEdit }) => {
       console.error("Error fetching profile data:", error);
     }
   };
+
+  const onEdit = (id) => {
+    navigate(`/edit_expense/${id}`);
+  }
 
   const calculateMonthlyData = (expenses) => {
     const groupedByMonth = expenses.reduce((acc, expense) => {
@@ -212,7 +219,7 @@ const ExpenseList = ({ onEdit }) => {
                 <TableCell>{budget.date}</TableCell>
                 <TableCell>{budget.description}</TableCell>
                 <TableCell>
-                  <IconButton onClick={() => onEdit(budget)} color="primary">
+                  <IconButton onClick={() => onEdit(budget._id)} color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton onClick={() => handleDelete(budget._id)} color="error">

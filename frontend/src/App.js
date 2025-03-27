@@ -9,6 +9,7 @@ import Navbar from "./pages/navbar";
 import AddExpense from "./pages/addExpense";
 import ExpenseList from "./pages/expensesList";
 import Profile from "./pages/profile";
+import UpdateExpense from "./pages/updateExpense";
 
 const PrivateRoute = ({ element }) => {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ const App=() => {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
             <Route path="/add_expenses" element={<AddExpense />} />
+            <Route path="/edit_expense/:id" element={<UpdateExpense />} />
             <Route path="/expenses_list" element={<ExpenseList />} />
             <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
             <Route path="*" element={<Navigate to="/login" />} />

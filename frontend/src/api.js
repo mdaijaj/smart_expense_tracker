@@ -9,6 +9,6 @@ export const updateProfile = (token) => API.put("/auth/profile", { headers: { Au
 export const getExpenses = (token) => API.get("/expenses", { headers: { Authorization: token } });
 export const addExpense = (expense, token) => API.post("/add_expense", expense, { headers: { Authorization: token } });
 export const expenseDetails = (id, token) => API.get(`/expenses/${id}`, { headers: { Authorization: token } });
-export const updateExpense = (id, token) => API.put(`/expenses/${id}`, { headers: { Authorization: token } });
+export const updateExpense = (id, expense, token) => API.put(`/expenses/${id}`, expense, { headers: { Authorization: token } });
 export const deleteExpense = (id, token) => API.delete(`/expenses/${id}`, { headers: { Authorization: token } });
 export const getTotalExpenses = (token) => API.get("/expenses/total", { headers: { Authorization: token } });
